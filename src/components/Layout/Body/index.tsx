@@ -3,19 +3,21 @@ import Showing from "../../Showing"
 import Coming from "../../Coming"
 import Trainner from "../../Trainner"
 import Showtimes from "../../Showtimes"
-import CommentViews from "../../CommentViews"
-import MovieBlog from "../../MovieBlog"
+import TourPriceGood from "../../TourPriceGood"
+import TourBlog from "../../TourBlog"
 import NewPromotion from "../../NewPromotion"
+import TourExperience from "../../TourExperience"
+import TourType from "../../TourType"
 
 const Body = () => {
   return <div>
     <Banner /> 
+		<TourPriceGood />
+		<TourExperience />
 		<Showing />
-		<Coming />
+		<TourType />
 		<Trainner />
-		<Showtimes />
-		<CommentViews />
-		<MovieBlog />
+		<TourBlog />
 		<NewPromotion />
   </div>
 }

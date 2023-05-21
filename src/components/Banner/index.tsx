@@ -1,24 +1,21 @@
 const Banner = () => {
-  return <div className="flex justify-center items-center p-20 bg-pink-50">
-    <div className="flex justify-between items-center w-[1200px]" >
+  return <div className="flex p-[10px] h-[490px]" 
+	style={{backgroundImage: "url(//cdn2.ivivu.com/2023/05/15/17/tour-top-20230515.png) "}}>
+    <div className="flex p-[30px] ml-[50px] w-[1200px] flex-col" >
       <div>
-        <h2 className="font-bold text-3xl text-[#f15050]">Rạp chiếu phim MoMo</h2>
-        <ul className="flex flex-col space-y-1 font-medium pt-1 m-[10px]">
-          <li>Rạp phim đầy đủ từ Bắc tới Nam</li>
-          <li>Suất chiếu cập nhật liên tục</li>
-          <li>Ưu đãi đặc biệt từng cụm rạp chiếu</li>
-          <li>Chỉ cần một chạm là có vé xem phim</li>
+        <h2 className="font-bold text-[42px] text-white">Du lịch theo cá tính</h2>
+        <ul className="flex flex-col space-y-1 font-medium pt-1 m-[10px] text-white">
+          <li>Combo khách sạn - vé máy bay - đưa đón sân bay giá tốt nhất</li>
         </ul>
-				<div className=" mt-[40px]">
+      </div>
+      <div className="w-[70%] p-[20px]" style={{ background: "rgba(0,0,0,0.3)"}}>
+        <input className="p-[20px] w-[100%] rounded-[12px] text-[18px]" type="text" placeholder="Bạn muốn đi đâu?" />
+      </div>
+			<div className=" mt-[40px]">
 				<button className="text-[#fff] px-[10px] py-[7px] hover:opacity-[0.8] text-[18px] font-bold bg-[#d82f8b] m-auto rounded-lg">
-					Đặt vé ngay
+					Đặt phòng ngay
 				</button>
 			</div>
-      </div>
-      <div className="w-1/2">
-        <img src="	https://static.mservice.io/img/momo-upload-api-210820192530-637650843307420995.jpg
-"></img>
-      </div>
     </div>
   </div>
 }

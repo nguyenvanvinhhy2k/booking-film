@@ -8,10 +8,10 @@ const NewPromotion = () => {
 				<div className="w-[23%] rounded-lg  text-[#fff] pb-[20px]" style={{
 				boxShadow: `0 2px 8px 0 rgba(20,16,11,.07)`}}>
 					<div className=" rounded-lg">
-					<img src="https://traffic-edge37.cdn.vncdn.io/cinema/img/4907747409891181-maxresdefault.jpg" alt="" />
+					<img src="https://cdn1.ivivu.com/images/2021/10/09/22/hop_qua_v1.png" alt="" />
 					</div>
 					<div className="px-[10px]">
-					<div className="mt-[5px] text-black font-bold">Độc quyền trên MoMo, săn vé CGV chỉ từ 59K!</div>
+					<div className="mt-[5px] text-black font-bold">GIFT VOUCHER!</div>
 					</div>
 					<div className="text-black font-bold px-[20px] mt-[20px]">
 					27/04/2023
@@ -20,10 +20,10 @@ const NewPromotion = () => {
 				<div className="w-[23%] rounded-lg  text-[#fff] pb-[20px]" style={{
 				boxShadow: `0 2px 8px 0 rgba(20,16,11,.07)`}}>
 					<div className=" rounded-lg">
-					<img src="https://traffic-edge37.cdn.vncdn.io/cinema/img/4907747409891181-maxresdefault.jpg" alt="" />
+					<img src="https://cdn1.ivivu.com/images/2021/10/09/22/hop_qua_v1.png" alt="" />
 					</div>
 					<div className="px-[10px]">
-					<div className="mt-[5px] text-black font-bold">Độc quyền trên MoMo, săn vé CGV chỉ từ 59K!</div>
+					<div className="mt-[5px] text-black font-bold">GIFT VOUCHER!</div>
 					</div>
 					<div className="text-black font-bold px-[20px] mt-[20px]">
 					27/04/2023
@@ -32,10 +32,10 @@ const NewPromotion = () => {
 				<div className="w-[23%] rounded-lg  text-[#fff] pb-[20px]" style={{
 				boxShadow: `0 2px 8px 0 rgba(20,16,11,.07)`}}>
 					<div className=" rounded-lg">
-					<img src="https://traffic-edge37.cdn.vncdn.io/cinema/img/4907747409891181-maxresdefault.jpg" alt="" />
+					<img src="https://cdn1.ivivu.com/images/2021/10/09/22/hop_qua_v1.png" alt="" />
 					</div>
 					<div className="px-[10px]">
-					<div className="mt-[5px] text-black font-bold">Độc quyền trên MoMo, săn vé CGV chỉ từ 59K!</div>
+					<div className="mt-[5px] text-black font-bold">GIFT VOUCHER!</div>
 					</div>
 					<div className="text-black font-bold px-[20px] mt-[20px]">
 					27/04/2023
@@ -44,10 +44,10 @@ const NewPromotion = () => {
 				<div className="w-[23%] rounded-lg  text-[#fff] pb-[20px]" style={{
 				boxShadow: `0 2px 8px 0 rgba(20,16,11,.07)`}}>
 					<div className=" rounded-lg">
-					<img src="https://traffic-edge37.cdn.vncdn.io/cinema/img/4907747409891181-maxresdefault.jpg" alt="" />
+					<img src="https://cdn1.ivivu.com/images/2021/10/09/22/hop_qua_v1.png" alt="" />
 					</div>
 					<div className="px-[10px]">
-					<div className="mt-[5px] text-black font-bold">Độc quyền trên MoMo, săn vé CGV chỉ từ 59K!</div>
+					<div className="mt-[5px] text-black font-bold">GIFT VOUCHER!</div>
 					</div>
 					<div className="text-black font-bold px-[20px] mt-[20px]">
 					27/04/2023
