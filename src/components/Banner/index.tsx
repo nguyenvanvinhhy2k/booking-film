@@ -8,8 +8,13 @@ const Banner = () => {
           <li>Combo khách sạn - vé máy bay - đưa đón sân bay giá tốt nhất</li>
         </ul>
       </div>
-      <div className="w-[70%] p-[20px]" style={{ background: "rgba(0,0,0,0.3)"}}>
+      <div className="w-[70%] p-[20px] rounded" style={{ background: "rgba(0,0,0,0.3)"}}>
         <input className="p-[20px] w-[100%] rounded-[12px] text-[18px]" type="text" placeholder="Bạn muốn đi đâu?" />
+        <div className="pt-[20px]">
+        <input className="p-[20px] rounded-[12px] text-[18px] pr-[85px] mr-[20px]" type="text" placeholder="Thời Gian" />
+        <input className="p-[20px] rounded-[12px] text-[18px] pr-[85px]" type="text" placeholder="Địa Điểm xuất phát" />
+        <button className="text-[#fff] px-[30px] pt-[21px] pb-[47px] hover:bg-[#FFBD00] text-[18px] font-bold bg-[#f79321] m-auto rounded-lg ml-[20px] h-[60px]">Tìm</button>
+        </div>
       </div>
 			<div className=" mt-[40px]">
 				<button className="text-[#fff] px-[10px] py-[7px] hover:opacity-[0.8] text-[18px] font-bold bg-[#d82f8b] m-auto rounded-lg">
