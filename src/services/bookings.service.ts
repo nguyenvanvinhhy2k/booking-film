@@ -2,12 +2,12 @@ import { CommonResponse } from "models/common";
 import { getAsync, patchAsync, deleteAsync, postAsync, putAsync } from "./request";
 
 const bookingsAPI = {
-	getMoives(params?: any): Promise<CommonResponse> {
-		const url = "/v1/movies"
-		return getAsync(url, params);
+	signUp(params?: any): Promise<CommonResponse> {
+		const url = "/v1/users"
+		return postAsync(url, params);
 	},
-	addBookings( params: any): Promise<CommonResponse> {
-		const url = "/v1/bookings"
+	signIn( params: any): Promise<CommonResponse> {
+		const url = "/v1/auth/signIn"
 		return postAsync(url, params);
 	},
 	updateBookings(

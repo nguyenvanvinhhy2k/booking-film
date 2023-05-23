@@ -1,5 +1,21 @@
+import { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
 const Header = () => {
+  const [user, setUser] = useState<any>()
+  const logOut = () => {
+    localStorage.removeItem("username");
+    localStorage.removeItem("auth");
+    window?.location?.reload()
+  }
+
+  const username = localStorage.getItem('username');
+
+  useEffect(() => {
+    if(username) {
+      setUser(username)
+    }
+  }, [username])
+
   return <div className="flex justify-center items-center p-[1rem] bg-[#003c71]">
     <div className="flex justify-between items-center w-[1200px]">
       <div className="flex items-center space-x-2">
@@ -19,6 +35,27 @@ const Header = () => {
           <li className="mr-[25px] cursor-pointer">DU LỊCH</li>
           <li className="mr-[25px] cursor-pointer">BLOG TOUR</li>
           <li className="mr-[25px] cursor-pointer">KHUYẾN MÃI</li>
+          {
+            username ? (
+              <div className="">{user.replaceAll('"', ' ')}</div>
+            ) : (
+              <Link to="/login">
+                <div className="cursor-pointer hover:text-rose-600">Đăng Nhập</div>
+              </Link>
+            )
+          }
+
+          <div className="px-[10px]">|</div>
+          {
+            username ? (
+                <div onClick={logOut} className="cursor-pointer hover:text-rose-600">Đăng Xuất</div>
+            ) : (
+              <Link to="/register">
+                <div className="cursor-pointer hover:text-rose-600">Đăng Ký</div>
+              </Link>
+            )
+          }
+
         </ul>
       </div>
     </div>
