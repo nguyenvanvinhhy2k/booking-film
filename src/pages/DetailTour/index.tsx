@@ -5,17 +5,79 @@ import ShowtimeDetail from "../../components/ShowTmeDetail"
 import Comment from "../../components/Comment"
 import Performer from "../../components/Performer"
 import TourPriceGood from "../../components/TourPriceGood"
+import bookingsAPI from "../../services/bookings.service"
+import { useParams } from "react-router"
+import { useEffect, useState } from "react"
 
 function DetailTour() {
+  const [tour, setTour] = useState<any>({})
+	const { id } = useParams()
+
+	console.log(tour)
+
+	const getTour = async () => {
+		const data = await bookingsAPI.getTour(id)
+
+    const startDate = new Date(data?.data?.startDate);
+    const endDate = new Date(data?.data?.endDate);
+    const timeDiff = Math.abs(endDate.getTime() - startDate.getTime());
+    const numDays = Math.ceil(timeDiff / (1000 * 3600 * 24));
+
+		const newData: any = {...data?.data}
+		newData.countDay = numDays
+		setTour({...newData})
+	}
+
+	const bookingTour = async () => {
+		const userId = localStorage.getItem('userID')
+		if(userId) {
+			try {
+				await bookingsAPI.addBookings({
+					userId: userId,
+					tourId: id,
+					bookingDate: new Date(),
+					status: 'WATING'
+				})
+			} catch (error) {
+				console.log(error)
+			}
+		} else{
+			alert("Bạn phải đăng nhập trước khi đặt tour")
+		}
+
+	}
+
+	const commentRate = async () => {
+		const userId = localStorage.getItem('userID')
+		if(userId) {
+			try {
+				await bookingsAPI.addReviews({
+					userId: userId,
+					tourId: id,
+					rating: 9,
+					comment: 'tour quá tuyệt vời'
+				})
+			} catch (error) {
+				console.log(error)
+			}
+		} else{
+			alert("Bạn phải đăng nhập trước khi bình luận")
+		}
+
+	}
+
+	useEffect(() => {
+		getTour()
+	},[id])
 
 	return (
 		<div className="flex items-center justify-center bg-[#ecf0f5]">
 			<div className="w-full h-auto">
 				<Header />
-				<BannerDetail />
+				<BannerDetail tour={tour}/>
 				<div className="flex p-[5rem] pt-[50px] ">
 					<div className="w-[62%] mr-[30px]">
-						<ShowtimeDetail />
+						<ShowtimeDetail tour={tour}/>
 						<Performer />
 					</div>
 					<div className="w-[38%] p-[20px] h-full rounded-lg bg-white" style={{	boxShadow: `0 2px 8px 0 rgba(20,16,11,.07)`}}>
@@ -41,8 +103,8 @@ function DetailTour() {
 							</div>
 							<div className="mt-[40px]">
 								<div className="flex justify-between border-[1px] border-yellow-800 p-[10px] rounded-[8px]">
-									<p className="w-[50%]">Người lớn</p>
-									<p className="w-[30%] text-[#ffbd00] leading-5 font-medium"> x 7.300.444</p>
+									<p className="w-[50%]">Số lượng</p>
+									<p className="w-[30%] text-[#ffbd00] leading-5 font-medium"> x {new Intl.NumberFormat('vi-VN', { style: 'currency', currency: 'VND' }).format(tour?.price)}</p>
 									<div className="flex justify-between w-[20%]">
 									<p> - </p>
 									<p>2</p>
@@ -50,15 +112,6 @@ function DetailTour() {
 									</div>
 								</div>
 
-								<div className="flex justify-between border-[1px] border-yellow-800 p-[10px] rounded-[8px] mt-[10px]">
-									<p className="w-[50%]">Trẻ em</p>
-									<p className="w-[30%] text-[#ffbd00] leading-5 font-medium"> x 7.300.444</p>
-									<div className="flex justify-between w-[20%]">
-									<p> - </p>
-									<p>2</p>
-									<p> + </p>
-									</div>
-								</div>
 							</div>
 
 							<div className="mt-[30px]">
@@ -66,12 +119,6 @@ function DetailTour() {
 							</div>
 
 							<div className="mt-[40px]">
-								<div className="">
-									<div className="flex justify-between">
-										<p>Giá gốc</p>
-										<p className="text-[#ffbd00] font-bold text-[28px]">3.434.435đ</p>
-									</div>
-								</div>
 								<div className="mt-[20px]">
 									<div className="flex justify-between">
 										<p>Tổng giá</p>
@@ -82,10 +129,10 @@ function DetailTour() {
 
 							<div className="mt-[30px]">
 								<div className="flex justify-between">
-									<div className="w-[48%] h-[50px] cursor-pointer hover:bg-[#f79321]  border-[3px] rounded border-[#f79321] flex justify-center items-center">
+									<div className="w-[48%] h-[50px] cursor-pointer hover:bg-[#f79321]  border-[3px] rounded border-[#f79321] flex justify-center items-center" onClick={commentRate}>
 										<p className="text-center text-[#f79321] p-[20px] text-[20px] font-semibold hover:text-[#fff]">Liên hệ tư vấn</p>
 									</div>
-									<div className="w-[48%] h-[50px] cursor-pointer border-[1px] bg-[#f79321] hover:bg-[#f9ab52!important] border-[3px] rounded border-[#f79321] flex justify-center items-center">
+									<div className="w-[48%] h-[50px] cursor-pointer border-[1px] bg-[#f79321] hover:bg-[#f9ab52!important] border-[3px] rounded border-[#f79321] flex justify-center items-center" onClick={bookingTour}>
 										<p className="text-center text-center text-[#fff] text-[20px] font-semibold">Yêu cầu đặt</p>
 									</div>
 

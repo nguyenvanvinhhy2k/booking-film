@@ -37,7 +37,7 @@ const Header = () => {
           <li className="mr-[25px] cursor-pointer">KHUYẾN MÃI</li>
           {
             username ? (
-              <div className="">{user.replaceAll('"', ' ')}</div>
+              <div className="">{user?.replaceAll('"', ' ')}</div>
             ) : (
               <Link to="/login">
                 <div className="cursor-pointer hover:text-rose-600">Đăng Nhập</div>

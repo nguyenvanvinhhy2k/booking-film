@@ -18,7 +18,7 @@ const Banner = () => {
       </div>
 			<div className=" mt-[40px]">
 				<button className="text-[#fff] px-[10px] py-[7px] hover:opacity-[0.8] text-[18px] font-bold bg-[#d82f8b] m-auto rounded-lg">
-					Đặt phòng ngay
+					Chọn tour ngay
 				</button>
 			</div>
     </div>
