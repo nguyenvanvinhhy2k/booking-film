@@ -12,9 +12,9 @@ import TourType from "../../TourType"
 const Body = () => {
   return <div>
     <Banner /> 
-		<TourPriceGood />
-		<TourExperience />
 		<Showing />
+		<TourPriceGood />
+		<TourExperience />		
 		<TourType />
 		<Trainner />
 		<TourBlog />

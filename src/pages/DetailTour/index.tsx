@@ -47,24 +47,24 @@ function DetailTour() {
 
 	}
 
-	const commentRate = async () => {
-		const userId = localStorage.getItem('userID')
-		if(userId) {
-			try {
-				await bookingsAPI.addReviews({
-					userId: userId,
-					tourId: id,
-					rating: 9,
-					comment: 'tour quá tuyệt vời'
-				})
-			} catch (error) {
-				console.log(error)
-			}
-		} else{
-			alert("Bạn phải đăng nhập trước khi bình luận")
-		}
+	// const commentRate = async () => {
+	// 	const userId = localStorage.getItem('userID')
+	// 	if(userId) {
+	// 		try {
+	// 			await bookingsAPI.addReviews({
+	// 				userId: userId,
+	// 				tourId: id,
+	// 				rating: 9,
+	// 				comment: 'ok'
+	// 			})
+	// 		} catch (error) {
+	// 			console.log(error)
+	// 		}
+	// 	} else{
+	// 		alert("Bạn phải đăng nhập trước khi bình luận")
+	// 	}
 
-	}
+	// }
 
 	useEffect(() => {
 		getTour()
@@ -79,6 +79,7 @@ function DetailTour() {
 					<div className="w-[62%] mr-[30px]">
 						<ShowtimeDetail tour={tour}/>
 						<Performer />
+						<Comment />
 					</div>
 					<div className="w-[38%] p-[20px] h-full rounded-lg bg-white" style={{	boxShadow: `0 2px 8px 0 rgba(20,16,11,.07)`}}>
 						<h1 className="text-[24px] text-[#003c71] font-bold mb-[20px]">Lịch khởi hành & giá</h1>
@@ -129,7 +130,7 @@ function DetailTour() {
 
 							<div className="mt-[30px]">
 								<div className="flex justify-between">
-									<div className="w-[48%] h-[50px] cursor-pointer hover:bg-[#f79321]  border-[3px] rounded border-[#f79321] flex justify-center items-center" onClick={commentRate}>
+									<div className="w-[48%] h-[50px] cursor-pointer hover:bg-[#f79321]  border-[3px] rounded border-[#f79321] flex justify-center items-center" >
 										<p className="text-center text-[#f79321] p-[20px] text-[20px] font-semibold hover:text-[#fff]">Liên hệ tư vấn</p>
 									</div>
 									<div className="w-[48%] h-[50px] cursor-pointer border-[1px] bg-[#f79321] hover:bg-[#f9ab52!important] border-[3px] rounded border-[#f79321] flex justify-center items-center" onClick={bookingTour}>

@@ -8,8 +8,7 @@ const Home = lazy(() => import('../pages/Home'))
 const DetailTour = lazy(() => import('../pages/DetailTour'))
 const Login = lazy(() => import('../pages/Login'))
 const Register = lazy(() => import('../pages/Register'))
-
-
+const SearchTour = lazy(() => import('../pages/SearchTour'))
 const AppRouter = () => {
 
 	return (
@@ -48,6 +47,14 @@ const AppRouter = () => {
 				element={
 					<Suspense fallback={<LoadingCricle />}>
 							<Register />
+					</Suspense>
+				}
+			/>
+								<Route
+				path="/SearchTour"
+				element={
+					<Suspense fallback={<LoadingCricle />}>
+							<SearchTour />
 					</Suspense>
 				}
 			/>

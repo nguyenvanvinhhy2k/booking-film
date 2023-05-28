@@ -14,6 +14,10 @@ const bookingsAPI = {
 		const url = "/tours"
 		return getAsync(url, params);
 	},
+	getMoviesBooinges(params?: any): Promise<CommonResponse> {
+		const url = "/bookings/MoviesBooingest"
+		return getAsync(url, params);
+	},
 	getTour( id: any): Promise<CommonResponse> {
 		const url = `/tours/${id}`
 		return getAsync(url);
