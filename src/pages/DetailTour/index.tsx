@@ -8,12 +8,13 @@ import TourPriceGood from "../../components/TourPriceGood"
 import bookingsAPI from "../../services/bookings.service"
 import { useParams } from "react-router"
 import { useEffect, useState } from "react"
+import TourType from "../../components/TourType"
 
 function DetailTour() {
   const [tour, setTour] = useState<any>({})
 	const { id } = useParams()
-
-	console.log(tour)
+	const [ count, setCount ] = useState<any>(1)
+	const [ totalPrice, setTotalPrice ] = useState<any>(tour?.price)
 
 	const getTour = async () => {
 		const data = await bookingsAPI.getTour(id)
@@ -36,8 +37,11 @@ function DetailTour() {
 					userId: userId,
 					tourId: id,
 					bookingDate: new Date(),
-					status: 'WATING'
+					status: 'DADAT',
+					totalPrice: totalPrice
 				})
+
+				alert("Bạn đã đặt tour thành công")
 			} catch (error) {
 				console.log(error)
 			}
@@ -47,24 +51,14 @@ function DetailTour() {
 
 	}
 
-	// const commentRate = async () => {
-	// 	const userId = localStorage.getItem('userID')
-	// 	if(userId) {
-	// 		try {
-	// 			await bookingsAPI.addReviews({
-	// 				userId: userId,
-	// 				tourId: id,
-	// 				rating: 9,
-	// 				comment: 'ok'
-	// 			})
-	// 		} catch (error) {
-	// 			console.log(error)
-	// 		}
-	// 	} else{
-	// 		alert("Bạn phải đăng nhập trước khi bình luận")
-	// 	}
 
-	// }
+	useEffect(() => {
+    setCount(1)
+	}, [id, tour])
+
+	useEffect(() => {
+    setTotalPrice(+tour?.price * count)
+	}, [count, id, tour])
 
 	useEffect(() => {
 		getTour()
@@ -78,7 +72,7 @@ function DetailTour() {
 				<div className="flex p-[5rem] pt-[50px] ">
 					<div className="w-[62%] mr-[30px]">
 						<ShowtimeDetail tour={tour}/>
-						<Performer />
+						<Performer tour={tour}/>
 						<Comment />
 					</div>
 					<div className="w-[38%] p-[20px] h-full rounded-lg bg-white" style={{	boxShadow: `0 2px 8px 0 rgba(20,16,11,.07)`}}>
@@ -107,9 +101,9 @@ function DetailTour() {
 									<p className="w-[50%]">Số lượng</p>
 									<p className="w-[30%] text-[#ffbd00] leading-5 font-medium"> x {new Intl.NumberFormat('vi-VN', { style: 'currency', currency: 'VND' }).format(tour?.price)}</p>
 									<div className="flex justify-between w-[20%]">
-									<p> - </p>
-									<p>2</p>
-									<p> + </p>
+									<p className="cursor-pointer hover:text-[#ffbd00]" onClick={() => {if(count>=2) setCount( count -1)}}> - </p>
+									<p>{count}</p>
+									<p className="cursor-pointer hover:text-[#ffbd00]"  onClick={() => setCount( count + 1)}> + </p>
 									</div>
 								</div>
 
@@ -123,16 +117,13 @@ function DetailTour() {
 								<div className="mt-[20px]">
 									<div className="flex justify-between">
 										<p>Tổng giá</p>
-										<p className="text-[#ffbd00] font-bold text-[28px]">2.434.435đ</p>
+										<p className="text-[#ffbd00] font-bold text-[28px]">{totalPrice ? new Intl.NumberFormat('vi-VN', { style: 'currency', currency: 'VND' }).format(totalPrice) : new Intl.NumberFormat('vi-VN', { style: 'currency', currency: 'VND' }).format(tour?.price)}</p>
 									</div>
 								</div>
 							</div>
 
 							<div className="mt-[30px]">
-								<div className="flex justify-between">
-									<div className="w-[48%] h-[50px] cursor-pointer hover:bg-[#f79321]  border-[3px] rounded border-[#f79321] flex justify-center items-center" >
-										<p className="text-center text-[#f79321] p-[20px] text-[20px] font-semibold hover:text-[#fff]">Liên hệ tư vấn</p>
-									</div>
+								<div className="flex justify-end">
 									<div className="w-[48%] h-[50px] cursor-pointer border-[1px] bg-[#f79321] hover:bg-[#f9ab52!important] border-[3px] rounded border-[#f79321] flex justify-center items-center" onClick={bookingTour}>
 										<p className="text-center text-center text-[#fff] text-[20px] font-semibold">Yêu cầu đặt</p>
 									</div>
@@ -143,7 +134,7 @@ function DetailTour() {
 						</div>
 					</div>
 				</div>
-				<TourPriceGood />
+				<TourType />
 				<Footer />
 			</div>
 		</div>

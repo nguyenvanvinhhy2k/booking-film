@@ -5,6 +5,7 @@ const Header = () => {
   const logOut = () => {
     localStorage.removeItem("username");
     localStorage.removeItem("auth");
+		localStorage.removeItem("userId");
     window?.location?.reload()
   }
 

@@ -20,7 +20,7 @@ const Comment = () => {
                 await bookingsAPI.addReviews({
                     userId: userId,
                     tourId: id,
-                    rating: 9,
+                    rating: '',
                     comment: commentss
                 })
                 getComment()
@@ -51,13 +51,7 @@ const Comment = () => {
         <p className="text-[24px] font-bold">Bình luận từ người xem</p>
         <div className="flex border-b-[2px]">
             <div className="p-[20px] font-bold border-b-[2px] border-b-pink-600">
-                tất cả (6)
-            </div>
-            <div className="p-[20px]">
-                khen (5)
-            </div>
-            <div className="p-[20px]">
-                gay cấn(1)
+                tất cả ({comments?.length})
             </div>
         </div>
         <div className="">

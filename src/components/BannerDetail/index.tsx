@@ -1,19 +1,19 @@
 const BannerDetail = ({tour}: any) => {
-  return <div className="flex justify-center items-center p-20 relative" style={{backgroundImage: "url(https://cdn2.ivivu.com/2022/07/11/17/ivivu-chua-phat-lon-750x390.gif)", backgroundSize: 'cover', backgroundRepeat: "no-repeat"}}>
+  return <div className="flex justify-center items-center p-20 relative" style={{backgroundImage: `url(http://localhost:8228/files/${tour.banner})`, backgroundSize: 'cover', backgroundRepeat: "no-repeat"}}>
 		<div className="bg-black/30 absolute top-0 left-0 right-0 bottom-0 h-full w-full z-50" style={{ background: "background-color: rgb(0 0 0 / 0.6)"}}/>
     <div className="flex items-center w-[1200px] z-[999]" >
-      <div className="w-[25%]">
-				<div className="w-[275px] h-[380px] border-[#fff] border-[1px]">
-        <img className="w-full h-full" src="//cdn2.ivivu.com/2022/03/28/16/ivivu-vinh-marina-bay-singapore-750x390.gif" style={{ boxShadow: "rgba(0, 0, 0, 0.25) 0px 54px 55px, rgba(0, 0, 0, 0.12) 0px -12px 30px, rgba(0, 0, 0, 0.12) 0px 4px 6px, rgba(0, 0, 0, 0.17) 0px 12px 13px, rgba(0, 0, 0, 0.09) 0px -3px 5px;"}} />
+      <div className="w-[30%]">
+				<div className="w-[325px] h-[380px] border-[#fff] border-[1px] overflow-hidden">
+        <img className="w-full h-full object-cover hover:scale-110 transition-transform duration-300 " src={`http://localhost:8228/files/${tour?.poster}`} style={{ boxShadow: "rgba(0, 0, 0, 0.25) 0px 54px 55px, rgba(0, 0, 0, 0.12) 0px -12px 30px, rgba(0, 0, 0, 0.12) 0px 4px 6px, rgba(0, 0, 0, 0.17) 0px 12px 13px, rgba(0, 0, 0, 0.09) 0px -3px 5px;"}} />
 				</div>
       </div>
 			<div>
         <h1 className="font-bold text-3xl text-white z-999">{tour?.tourName}</h1>
         <ul className="flex flex-col text-white space-y-1 font-medium pt-1 m-[10px]">
-          <li>Hà nội</li>
+          <li>{tour?.listLocation}</li>
           <li>{tour?.countDay} ngày</li>
-          <li>Máy bay</li>
-          <li>Mã Tour: T{Math.floor(1000 + Math.random() * 9000)}</li>
+          <li>{tour?.transport}</li>
+          <li>Mã Tour: {tour?.code}</li>
         </ul>
       </div>
     </div>

@@ -1,4 +1,15 @@
+import { useState } from "react"
+import { useNavigate } from "react-router"
+
 const Banner = () => {
+	const [value, setValue] = useState<any>()
+	const navigate = useNavigate()
+
+	const searchTour = () => {
+    navigate(`/SearchTour?_q=${value}`)
+	}
+
+	
   return <div className="flex p-[10px] h-[490px]" 
 	style={{backgroundImage: "url(//cdn2.ivivu.com/2023/05/15/17/tour-top-20230515.png) "}}>
     <div className="flex p-[30px] ml-[50px] w-[1200px] flex-col" >
@@ -9,11 +20,11 @@ const Banner = () => {
         </ul>
       </div>
       <div className="w-[70%] p-[20px] rounded" style={{ background: "rgba(0,0,0,0.3)"}}>
-        <input className="p-[20px] w-[100%] rounded-[12px] text-[18px]" type="text" placeholder="Bạn muốn đi đâu?" />
+        <input className="p-[20px] w-[100%] rounded-[12px] text-[18px]" type="text" onChange={(e: any) => setValue(e?.target?.value)} placeholder="Bạn muốn đi đâu?" />
         <div className="pt-[20px]">
         <input className="p-[20px] rounded-[12px] text-[18px] pr-[85px] mr-[20px]" type="text" placeholder="Thời Gian" />
         <input className="p-[20px] rounded-[12px] text-[18px] pr-[85px]" type="text" placeholder="Địa Điểm xuất phát" />
-        <button className="text-[#fff] px-[30px] pt-[21px] pb-[47px] hover:bg-[#FFBD00] text-[18px] font-bold bg-[#f79321] m-auto rounded-lg ml-[20px] h-[60px]">Tìm</button>
+        <button onClick={searchTour} className="text-[#fff] px-[30px] pt-[21px] pb-[47px] hover:bg-[#FFBD00] text-[18px] font-bold bg-[#f79321] m-auto rounded-lg ml-[20px] h-[60px]">Tìm</button>
         </div>
       </div>
 			<div className=" mt-[40px]">
