@@ -6,13 +6,14 @@ import Comment from "../../components/Comment"
 import Performer from "../../components/Performer"
 import TourPriceGood from "../../components/TourPriceGood"
 import bookingsAPI from "../../services/bookings.service"
-import { useParams } from "react-router"
+import { useNavigate, useParams } from "react-router"
 import { useEffect, useState } from "react"
 import TourType from "../../components/TourType"
 
 function DetailTour() {
   const [tour, setTour] = useState<any>({})
 	const { id } = useParams()
+	const navigation = useNavigate()
 	const [ count, setCount ] = useState<any>(1)
 	const [ totalPrice, setTotalPrice ] = useState<any>(tour?.price)
 
@@ -30,18 +31,20 @@ function DetailTour() {
 	}
 
 	const bookingTour = async () => {
-		const userId = localStorage.getItem('userID')
+		const userId = localStorage.getItem('userIds')
+		const data = {
+			userId: userId,
+			tourId: id,
+			bookingDate: new Date(),
+			status: 'DADAT',
+			totalPrice: totalPrice
+		}
 		if(userId) {
 			try {
-				await bookingsAPI.addBookings({
-					userId: userId,
-					tourId: id,
-					bookingDate: new Date(),
-					status: 'DADAT',
-					totalPrice: totalPrice
-				})
-
+				await bookingsAPI.addBookings(data)
+        localStorage.setItem('booking', JSON.stringify(data))
 				alert("Bạn đã đặt tour thành công")
+				navigation(`/booking-view/${id}`)
 			} catch (error) {
 				console.log(error)
 			}

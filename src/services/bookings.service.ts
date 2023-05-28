@@ -14,6 +14,17 @@ const bookingsAPI = {
 		const url = "/tours"
 		return getAsync(url, params);
 	},
+	updateBookings(
+    id: string,
+    params: any
+  ): Promise<CommonResponse> {
+    const url = `/bookings/${id}`
+    return patchAsync(url, params)
+  },
+	getUser(id: any): Promise<CommonResponse> {
+    const url = `/v1/users/${id}`
+    return getAsync(url)
+	},
 	getMoviesBooinges(params?: any): Promise<CommonResponse> {
 		const url = "/bookings/MoviesBooingest"
 		return getAsync(url, params);
