@@ -9,6 +9,8 @@ const DetailTour = lazy(() => import('../pages/DetailTour'))
 const Login = lazy(() => import('../pages/Login'))
 const Register = lazy(() => import('../pages/Register'))
 const SearchTour = lazy(() => import('../pages/SearchTour'))
+const BookingViews = lazy(() => import('../pages/BookingViews'))
+
 const AppRouter = () => {
 
 	return (
@@ -58,6 +60,15 @@ const AppRouter = () => {
 					</Suspense>
 				}
 			/>
+											<Route
+				path="/booking-view/:id"
+				element={
+					<Suspense fallback={<LoadingCricle />}>
+							<BookingViews />
+					</Suspense>
+				}
+			/>
+			
 		</Routes>
 	)
 }

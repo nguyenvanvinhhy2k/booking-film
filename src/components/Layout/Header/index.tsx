@@ -5,11 +5,13 @@ const Header = () => {
   const logOut = () => {
     localStorage.removeItem("username");
     localStorage.removeItem("auth");
-		localStorage.removeItem("userId");
+		localStorage.removeItem("userIds");
     window?.location?.reload()
   }
 
   const username = localStorage.getItem('username');
+	const bookingTour: any = localStorage.getItem('booking')
+	const tourId = JSON.parse(bookingTour)
 
   useEffect(() => {
     if(username) {
@@ -32,7 +34,7 @@ const Header = () => {
           <Link to="/">
             <li className="mr-[25px] cursor-pointer">HOME</li>
           </Link>
-          <li className="mr-[25px] cursor-pointer">THÔNG TIN</li>
+          <Link to={`/booking-view/${tourId?.tourId}`} className="mr-[25px] cursor-pointer">THÔNG TIN</Link>
           <li className="mr-[25px] cursor-pointer">DU LỊCH</li>
           <li className="mr-[25px] cursor-pointer">BLOG TOUR</li>
           <li className="mr-[25px] cursor-pointer">KHUYẾN MÃI</li>

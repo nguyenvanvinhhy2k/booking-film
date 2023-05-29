@@ -33,7 +33,7 @@ function Login() {
    if(res?.status === "success") {
     localStorage.setItem('username', JSON.stringify(res.data.user.username));
     localStorage.setItem('auth', JSON.stringify(res.data.auth));
-		localStorage.setItem('userID', JSON.stringify(res.data.user.id));
+		localStorage.setItem('userIds', JSON.stringify(res.data.user.id));
     navigate('/')
    } else {
     alert(res?.message)

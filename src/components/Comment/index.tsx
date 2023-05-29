@@ -14,7 +14,7 @@ const Comment = () => {
 		return dayjs(date).format(format);
     }
     const commentRate = async () => {
-        const userId = localStorage.getItem('userID')
+        const userId = localStorage.getItem('userIds')
         if (userId) {
             try {
                 await bookingsAPI.addReviews({
