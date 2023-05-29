@@ -15,7 +15,7 @@ const Body = () => {
 		<Showing />
 		<TourPriceGood />
 		<TourExperience />		
-		<TourType />
+		{/* <TourType /> */}
 		<Trainner />
 		<TourBlog />
 		<NewPromotion />

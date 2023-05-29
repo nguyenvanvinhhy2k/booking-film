@@ -20,7 +20,7 @@ const Comment = () => {
                 await bookingsAPI.addReviews({
                     userId: userId,
                     tourId: id,
-                    rating: '',
+                    rating: Math.floor(Math.random() * 10) + 1,
                     comment: commentss
                 })
                 getComment()
