@@ -14,8 +14,8 @@ const Body = () => {
 		<TourExperience />		
 		{/* <TourType /> */}
 		<Trainner />
-		<TourBlog />
-		<NewPromotion />
+		{/* <TourBlog />
+		<NewPromotion /> */}
   </div>
 }
 export default Body

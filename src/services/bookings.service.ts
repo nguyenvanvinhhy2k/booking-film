@@ -53,6 +53,10 @@ const bookingsAPI = {
 		const url = "/reviews"
 		return postAsync(url, params);
 	},
+	findLastTour( params?: any): Promise<CommonResponse> {
+		const url = "/tours/lastTour"
+		return getAsync(url, params);
+	},
 };
 
 export default bookingsAPI;

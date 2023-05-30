@@ -7,7 +7,7 @@ const BannerDetail = ({tour}: any) => {
         <img className="w-full h-full object-cover hover:scale-110 transition-transform duration-300 " src={`http://localhost:8228/files/${tour?.poster}`} style={{ boxShadow: "rgba(0, 0, 0, 0.25) 0px 54px 55px, rgba(0, 0, 0, 0.12) 0px -12px 30px, rgba(0, 0, 0, 0.12) 0px 4px 6px, rgba(0, 0, 0, 0.17) 0px 12px 13px, rgba(0, 0, 0, 0.09) 0px -3px 5px;"}} />
 				</div>
       </div>
-			<div>
+			<div className="ml-[30px]">
         <h1 className="font-bold text-3xl text-white z-999">{tour?.tourName}</h1>
         <ul className="flex flex-col text-white space-y-1 font-medium pt-1 m-[10px]">
           <li>{tour?.listLocation}</li>
