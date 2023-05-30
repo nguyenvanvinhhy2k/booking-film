@@ -9,6 +9,7 @@ import bookingsAPI from "../../services/bookings.service"
 import { useNavigate, useParams } from "react-router"
 import { useEffect, useState } from "react"
 import TourType from "../../components/TourType"
+import { date } from "yup"
 
 function DetailTour() {
   const [tour, setTour] = useState<any>({})
@@ -16,26 +17,35 @@ function DetailTour() {
 	const navigation = useNavigate()
 	const [ count, setCount ] = useState<any>(1)
 	const [ totalPrice, setTotalPrice ] = useState<any>(tour?.price)
+	const [date, setDate] = useState<any>()
+	const [currentPick, setCurrentPick] = useState<any>()
 
+
+	const getDate = ( date: any, index: any) => {
+		setCurrentPick(index)
+		setDate(date)
+	}
+	
 	const getTour = async () => {
 		const data = await bookingsAPI.getTour(id)
 
-    const startDate = new Date(data?.data?.startDate);
-    const endDate = new Date(data?.data?.endDate);
-    const timeDiff = Math.abs(endDate.getTime() - startDate.getTime());
-    const numDays = Math.ceil(timeDiff / (1000 * 3600 * 24));
+         const startDate = new Date(data?.data?.startDate);
+         const endDate = new Date(data?.data?.endDate);
+         const timeDiff = Math.abs(endDate.getTime() - startDate.getTime());
+         const numDays = Math.ceil(timeDiff / (1000 * 3600 * 24));
 
 		const newData: any = {...data?.data}
 		newData.countDay = numDays
+		newData.newListDate = newData.listDate.split(",")
 		setTour({...newData})
 	}
-
 	const bookingTour = async () => {
+
 		const userId = localStorage.getItem('userIds')
 		const data = {
 			userId: userId,
 			tourId: id,
-			bookingDate: new Date(),
+			bookingDate: date,
 			status: 'DADAT',
 			totalPrice: totalPrice
 		}
@@ -83,7 +93,16 @@ function DetailTour() {
 						<div className="">
 							<p className="text-[20px] font-medium">Chọn ngày khởi hành:</p>
               <div className="flex mt-[20px]">
-								<div className="mr-[20px] w-[16%] h-[67px] hover:border-[#26bed6] border-[3px] flex items-center justify-center border-slate-300 rounded-[12px] p-[10px]">
+				{
+					tour?.newListDate?.map((date: any, index: any) => {
+						return (
+							<div onClick={() => getDate(date, index)} className={`mr-[20px] w-[16%] h-[67px] hover:border-[#26bed6] border-[3px] flex items-center justify-center border-slate-300 rounded-[12px] p-[10px] ${currentPick === index ? "border-[#26bed6]" : ""}`}>
+								<p className="">{date}</p>
+							</div>
+						)
+					})
+				}
+								{/* <div className="mr-[20px] w-[16%] h-[67px] hover:border-[#26bed6] border-[3px] flex items-center justify-center border-slate-300 rounded-[12px] p-[10px]">
 									<p className="">24/5</p>
 								</div>
 								<div className="mr-[20px] w-[16%] h-[67px] hover:border-[#26bed6] border-[3px] flex items-center justify-center border-slate-300 rounded-[12px] p-[10px]">
@@ -97,7 +116,7 @@ function DetailTour() {
 								</div>
 								<div className="mr-[20px] w-[16%] h-[67px] hover:border-[#26bed6] border-[3px] flex items-center justify-center border-slate-300 rounded-[12px] p-[10px]">
 									<p className="">24/5</p>
-								</div>
+								</div> */}
 							</div>
 							<div className="mt-[40px]">
 								<div className="flex justify-between border-[1px] border-yellow-800 p-[10px] rounded-[8px]">

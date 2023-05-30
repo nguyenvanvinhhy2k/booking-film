@@ -18,8 +18,8 @@ const TourPriceGood = () => {
 				const title = categories?.data?.data?.find((it: any) => item?.cateId === it?.id).description
 				setCategory({ name, title })
 				return {
-          ...item,
-					listLocationNew: item?.listLocation?.split(",")
+                 ...item,
+				listLocationNew: item?.listLocation?.split(",")
 				}
 			})
 			setTours(newData?.slice(0, 3))

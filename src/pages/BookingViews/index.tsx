@@ -21,7 +21,7 @@ function BookingViews() {
 	const bookingTour = localStorage.getItem('booking')
 
 
-	console.log(booking)
+	console.log(tour)
 
 	const getTour = async () => {
 		const data = await bookingsAPI.getTour(id)
@@ -89,12 +89,16 @@ function BookingViews() {
 								<p className="mb-[10px]">Số điện thoại : {user.phoneNumber}</p>
 								<p className="mb-[10px]">Email : {user?.email}</p>
 								<p className="mb-[10px]">Ngày đặt : {booking?.createdAt && formatDate(booking?.createdAt, "DD/MM/YYYY HH:mm:ss")}</p>
-								<p className="mb-[10px]">Ngày khởi hành : {booking?.createdAt && formatDate(booking?.createdAt, "DD/MM/YYYY")}</p>
+								<p className="mb-[10px]">Ngày khởi hành : {booking?.bookingDate}/2023</p>
 								<p className="mb-[10px]">Tổng tiền : {new Intl.NumberFormat('vi-VN', { style: 'currency', currency: 'VND' }).format(booking?.totalPrice)}</p>
 								<p className="mt-[20px] text-[24px]">ANCORA sẽ liên hệ với bạn ngay sau ít phút nữa!!!</p>
-              {booking.status === "DADAT" ? (
-							<div className="text-[#fff] flex justify-center items-center w-full mt-[40px] hover:bg-[#FFBD00] text-[18px] font-bold bg-[#f79321] m-auto rounded-lg ml-[20px] text-center h-[60px] cursor-pointer"><p className="flex justify-center items-center">CHỜ XÁC NHẬN</p></div>) : booking.status === "DAXACNHAN" ? (
-							<div className="text-[#fff] flex justify-center items-center w-full mt-[40px] hover:bg-[#FFBD00] text-[18px] font-bold bg-[#f79321] m-auto rounded-lg ml-[20px] text-center h-[60px] cursor-pointer"><p className="flex justify-center items-center">ĐẶT THÀNH CÔNG</p></div>) : booking.status === "DAHOANTHANHTOUR" ? (
+                            {booking.status === "DADAT" ? (
+							<div className="text-[#fff] flex justify-center items-center w-full mt-[40px] hover:bg-[#FFBD00] text-[18px] font-bold bg-[#f79321] m-auto rounded-lg ml-[20px] text-center h-[60px] cursor-pointer"><p className="flex justify-center items-center">CHỜ XÁC NHẬN</p></div>) : 
+							booking.status === "DAXACNHAN" ? (
+							<div onClick={() => updateBooking("DANGDITOUR")} className="text-[#fff] flex justify-center items-center w-full mt-[40px] hover:bg-[#FFBD00] text-[18px] font-bold bg-[#f79321] m-auto rounded-lg ml-[20px] text-center h-[60px] cursor-pointer"><p className="flex justify-center items-center">ĐẶT THÀNH CÔNG</p></div>) : 
+							booking.status === "DANGDITOUR" ? (
+							<div  className="text-[#fff] flex justify-center items-center w-full mt-[40px] hover:bg-[#FFBD00] text-[18px] font-bold bg-[#f79321] m-auto rounded-lg ml-[20px] text-center h-[60px] cursor-pointer"><p className="flex justify-center items-center">ĐANG ĐI TOUR</p></div>):
+							booking.status === "DAHOANTHANHTOUR" ? (
 							<div onClick={susscesTour} className="text-[#fff] flex justify-center items-center w-full mt-[40px] hover:bg-[#FFBD00] text-[18px] font-bold bg-[#f79321] m-auto rounded-lg ml-[20px] text-center h-[60px] cursor-pointer"><p className="flex justify-center items-center">HOÀN THÀNH TOUR</p></div>): ""}
 
 							{
